@@ -1,5 +1,5 @@
 
-import pygame
+import pygame.draw as show
 
 class vector2():
     def __init__(self, Xpos: int | float, Ypos: int | float):
@@ -59,6 +59,21 @@ class vector2():
     
     def length(self):
         return (self.X**2 + self.Y**2)**0.5
+    
+    def distance(self, obj: 'vector2'):
+        return (((self.X - obj.X) ** 2) + ((self.Y - obj.Y) ** 2)) ** 0.5
 
-def draw(Screen, object):
-    pygame.draw.circle(Screen, object.COLOUR, object.pos.Value(), object.RADIUS,)
+def draw(Screen, objects):
+    for object in objects:
+        show.circle(Screen, object.COLOUR, object.pos.Value(), object.RADIUS,)
+
+def Grids(self):
+    from math import ceil
+    GridSize = int((self.SCREENSIZE[0] * self.SCREENSIZE[1] // self.Balls) ** 0.5)
+    
+    X_Axis_Box = ceil(self.SCREENSIZE[0] / GridSize)
+    Y_Axis_Box = ceil(self.SCREENSIZE[1] / GridSize)
+
+    return GridSize
+
+        
